@@ -1,0 +1,48 @@
+  
+  <h1> Weather Condition of <%= @weathers["query"]["results"]["channel"]["location"]["region"]%></h1>
+  <h2>Today's weather condition</h2>
+
+  <table>
+    <tr>
+      <th>code</th>
+      <th>Date</th>
+      <th>Temp</th>
+      <th>Text</th>
+
+    </tr>
+    <tr>
+      <td><%= @weathers["query"]["results"]["channel"]["item"]["condition"]["code"] %></td>
+      <td><%= @weathers["query"]["results"]["channel"]["item"]["condition"]["date"] %></td>
+      <td><%= @weathers["query"]["results"]["channel"]["item"]["condition"]["temp"] %></td>
+      <td><%= @weathers["query"]["results"]["channel"]["item"]["condition"]["text"] %></td>
+    </tr>
+  </table>
+
+  <h2>5 day forcast of Kigali</h2>
+
+<table>
+    <tr>
+      <th>code</th>
+      <th>Date</th>
+      <th>Day</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Text</th>
+
+    </tr>
+    <% @weathers["query"]["results"]["channel"]["item"]["forecast"].each do |weather| %>
+    <tr>
+      <td><%= weather["code"]%></td>
+      <td><%= weather["date"] %></td>
+      <td><%= weather["day"] %></td>
+      <td><%= weather["high"] %></td>
+      <td><%= weather["low"] %></td>
+      <td><%= weather["text"] %></td>
+    </tr>
+    <% end %>
+  </table>
+
+ 
+
+
+
